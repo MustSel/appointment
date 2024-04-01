@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import Swal from 'sweetalert2'
 
 function AddModal({ show, handleClose, name, setAppointments, appointments }) {
   const [appointment, setAppointment] = useState({
@@ -21,7 +22,28 @@ function AddModal({ show, handleClose, name, setAppointments, appointments }) {
     e.preventDefault();
     setAppointments((prevAppointments) => [...prevAppointments,{...appointment, doctorName: name}]);
     handleClose();
+    addedBasketPopup()
   };
+
+  const addedBasketPopup = () => {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Appointment Saved",
+    });
+  };
+  
+  
 
   return (
     <Modal show={show} onHide={handleClose}>
@@ -41,6 +63,7 @@ function AddModal({ show, handleClose, name, setAppointments, appointments }) {
               // value={appointment.patientName}
               onChange={handlePatientName}
               autoFocus
+              required
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="date">
@@ -48,6 +71,7 @@ function AddModal({ show, handleClose, name, setAppointments, appointments }) {
             <Form.Control
               type="datetime-local"
               name="date"
+              required
               // value={appointment.date}
               onChange={handleDate}
             />

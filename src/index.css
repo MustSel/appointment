@@ -1,26 +1,56 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  background-color: #d9afd9;
+  background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
+}
 
-.borderWidth{
+.banner {
+  background-color: antiquewhite !important;
+  border-radius: 10px;
+}
+
+.hosName {
+  color: brown;
+  font-weight: 700;
+  font-size: 900;
+  &:hover {
+    color: #fbab7e;
+  }
+}
+.borderWidth {
   border-width: 15px !important;
 }
 
-.consulted{
+.consulted {
   width: 30% !important;
   height: 40px !important;
   opacity: 0.9;
 
   font-size: 2rem;
 }
-.doctorCard{
+.doctorCardDiv {
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+
+  border-radius: 10px;
+}
+.doctorCard {
   transition: all 0.4s;
+  background-color: red;
 }
-.doctorCard:hover{
+.doctorCard:hover {
   scale: 1.1;
+  outline: 2px solid black;
+  outline-offset: 3px;
 }
-.doctorName{
-  font-size:large;
+.doctorName {
+  font-size: large;
+}
+
+.default-image-container img {
+  width: 40%;
 }

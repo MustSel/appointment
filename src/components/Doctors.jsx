@@ -5,7 +5,7 @@ const Doctors = ({ doctor, show }) => {
   const { name, dep, img } = doctor;
 
   return (
-    <Col>
+    <Col className="doctorCardDiv" >
       <img
         className="doctorCard my-3 rounded-3"
         onClick={() => show(doctor)}

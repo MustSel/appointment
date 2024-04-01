@@ -1,6 +1,7 @@
 import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Swal from 'sweetalert2'
 
 const AppointmentList = ({ appointments, setAppointments,consultedAppointments,setConsultedAppointments }) => {
   
@@ -11,6 +12,11 @@ const AppointmentList = ({ appointments, setAppointments,consultedAppointments,s
     const updatedConsultedAppointments = { ...consultedAppointments };
     delete updatedConsultedAppointments[index];
     setConsultedAppointments(updatedConsultedAppointments);
+    Swal.fire({
+      icon: "success",
+      title: "Appointment Cancelled",
+    });
+  
   };
 
   const handleDoubleClick = (index) => {
@@ -21,8 +27,10 @@ const AppointmentList = ({ appointments, setAppointments,consultedAppointments,s
    
   };
 
+
+
   return (
-    <div className="d-flex flex-column rounded-4 border border-2 my-4">
+    <div className="d-flex flex-column rounded-4 border border-2 my-4" id="appointments">
       <h1 className="text-center text-success">Appointment List</h1>
       <div className="p-3">
         {appointments.length > 0 ? (
@@ -67,7 +75,7 @@ const AppointmentList = ({ appointments, setAppointments,consultedAppointments,s
           ))
         ) : (
           <div className="default-image-container">
-            <img src="./img/appointment.jpg" width={400} alt="Default" />
+            <img src="./img/appointment.jpg" alt="Default" />
             <p>No appointments available</p>
           </div>
         )}
